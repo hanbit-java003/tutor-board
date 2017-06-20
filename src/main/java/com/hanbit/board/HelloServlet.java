@@ -14,16 +14,23 @@ public class HelloServlet extends HttpServlet {
 	protected void service(HttpServletRequest req,
 			HttpServletResponse resp) throws ServletException, IOException {
 		
-		int x = Integer.valueOf(req.getParameter("x"));
-		int y = Integer.valueOf(req.getParameter("y"));
-		
-		int result = x + y;
-		
-		req.setAttribute("result", result);
-		
-		RequestDispatcher dispatcher
-			= req.getRequestDispatcher("/WEB-INF/jsp/hello.jsp");
-		dispatcher.forward(req, resp);
+		try {
+			int x = Integer.valueOf(req.getParameter("x"));
+			int y = Integer.valueOf(req.getParameter("y"));
+			
+			int result = x + y;
+			
+			req.setAttribute("result", result);
+			
+			RequestDispatcher dispatcher
+				= req.getRequestDispatcher("/WEB-INF/jsp/hello.jsp");
+			dispatcher.forward(req, resp);
+		}
+		catch (Exception e) {
+			RequestDispatcher dispatcher
+				= req.getRequestDispatcher("/WEB-INF/jsp/error.jsp");
+			dispatcher.forward(req, resp);
+		}
 	}
 	
 }
