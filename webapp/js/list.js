@@ -4,7 +4,7 @@ $(function() {
 	});
 	
 	$('#board-list tbody tr').on('click', function() {
-		var no = $(this).attr("no");
+		var no = $(this).attr('no');
 		
 		location.href = '/detail.view?no=' + no;
 	});

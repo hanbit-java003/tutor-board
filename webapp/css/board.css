@@ -14,3 +14,21 @@
 #board-list tbody tr {
 	cursor: pointer;
 }
+
+.board-text {
+	border-bottom: solid 1px #999;
+}
+
+.board-contents {
+	min-height: 200px;
+	border-top: solid 1px #999;
+	border-bottom: solid 1px #999;
+}
+
+
+
+
+
+
+
+

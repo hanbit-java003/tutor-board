@@ -26,6 +26,13 @@
   		(#{no}, #{title}, #{writer}, 0, #{contents})
   </insert>
   
+  <select id="selectArticle" parameterType="int"
+  	resultType="com.hanbit.board.vo.BoardVO">
+	SELECT no, title, writer, views, contents
+	  FROM tbl_board
+	 WHERE no = #{no}
+  </select>
+  
 </mapper>
 
 
