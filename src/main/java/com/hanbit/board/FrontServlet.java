@@ -20,10 +20,24 @@ public class FrontServlet extends HttpServlet {
 			HttpServletResponse res) throws ServletException, IOException {
 
 		String uri = req.getRequestURI();
+		BoardController controller = new BoardController(req, res);
+		String viewName = "/404";
+		
+		if (uri.endsWith(".view")) {
+			viewName = handleView(uri, controller);
+		}
+		else if (uri.endsWith(".do")) {
+			
+		}
+		
+		String path = "/WEB-INF/jsp" + viewName + ".jsp";
+		RequestDispatcher dispatcher = req.getRequestDispatcher(path);
+		dispatcher.forward(req, res);
+	}
+	
+	private String handleView(String uri, BoardController controller) {
 		int endIndex = uri.lastIndexOf(".view");
 		String viewName = uri.substring(0, endIndex);
-		
-		BoardController controller = new BoardController(req, res);
 		
 		switch (viewName) {
 			case "/list": {
@@ -47,9 +61,14 @@ public class FrontServlet extends HttpServlet {
 			}
 		}
 		
-		String path = "/WEB-INF/jsp" + viewName + ".jsp";
-		RequestDispatcher dispatcher = req.getRequestDispatcher(path);
-		dispatcher.forward(req, res);
+		return viewName;
 	}
 	
 }
+
+
+
+
+
+
+
