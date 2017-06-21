@@ -10,3 +10,7 @@
 #board-contents {
 	height: 300px;
 }
+
+#board-list tbody tr {
+	cursor: pointer;
+}

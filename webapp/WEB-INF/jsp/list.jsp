@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<table class="table">
+<table id="board-list" class="table table-striped table-hover">
 	<thead>
 		<tr>
 			<th>번호</th>
@@ -26,7 +26,7 @@
 	List<BoardVO> list = (List<BoardVO>) request.getAttribute("list");
 	%>
 	<% for (BoardVO article : list) { %>
-		<tr>
+		<tr no="<%=article.getNo() %>">
 			<td><%=article.getNo() %></td>
 			<td><%=article.getTitle() %></td>
 			<td><%=article.getWriter() %></td>
