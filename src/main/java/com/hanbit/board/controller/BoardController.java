@@ -37,6 +37,23 @@ public class BoardController {
 	}
 	
 	public String doAdd() {
+		SqlSession sqlSession = CommonDAO.openSession();
+		
+		int no = sqlSession.selectOne("board.selectNextNo");
+		
+		String title = request.getParameter("title");
+		String writer = request.getParameter("writer");
+		String contents = request.getParameter("contents");
+		
+		BoardVO boardVO = new BoardVO();
+		boardVO.setNo(no);
+		boardVO.setTitle(title);
+		boardVO.setWriter(writer);
+		boardVO.setContents(contents);
+		
+		sqlSession.insert("board.insertArticle", boardVO);
+		sqlSession.commit();
+		sqlSession.close();
 		
 		return "/list";
 	}

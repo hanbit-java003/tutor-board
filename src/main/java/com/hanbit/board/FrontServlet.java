@@ -19,6 +19,8 @@ public class FrontServlet extends HttpServlet {
 	protected void service(HttpServletRequest req,
 			HttpServletResponse res) throws ServletException, IOException {
 
+		req.setCharacterEncoding("UTF-8");
+		
 		String uri = req.getRequestURI();
 		BoardController controller = new BoardController(req, res);
 		String viewName = "/404";

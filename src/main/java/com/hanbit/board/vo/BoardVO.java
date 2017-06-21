@@ -6,6 +6,7 @@ public class BoardVO {
 	private String title;
 	private String writer;
 	private int views;
+	private String contents;
 	
 	public int getNo() {
 		return no;
@@ -30,6 +31,12 @@ public class BoardVO {
 	}
 	public void setViews(int views) {
 		this.views = views;
+	}
+	public String getContents() {
+		return contents;
+	}
+	public void setContents(String contents) {
+		this.contents = contents;
 	}
 	
 }

@@ -14,4 +14,25 @@
   	 ORDER BY no DESC
   </select>
   
+  <select id="selectNextNo" resultType="int">
+  	SELECT MAX(no) + 1
+  	  FROM tbl_board
+  </select>
+  
+  <insert id="insertArticle" parameterType="com.hanbit.board.vo.BoardVO">
+  	INSERT INTO tbl_board
+  		(no, title, writer, views, contents)
+  	VALUES
+  		(#{no}, #{title}, #{writer}, 0, #{contents})
+  </insert>
+  
 </mapper>
+
+
+
+
+
+
+
+
+
