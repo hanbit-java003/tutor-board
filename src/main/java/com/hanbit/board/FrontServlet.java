@@ -50,6 +50,10 @@ public class FrontServlet extends HttpServlet {
 				viewName = controller.doAdd();
 				break;
 			}
+			case "/delete": {
+				viewName = controller.doDelete();
+				break;
+			}
 		}
 		
 		return viewName;

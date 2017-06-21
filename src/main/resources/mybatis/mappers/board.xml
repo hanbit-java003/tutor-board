@@ -39,6 +39,12 @@
   	 WHERE no = #{no}
   </update>
   
+  <delete id="deleteArticle" parameterType="int">
+  	DELETE
+  	  FROM tbl_board
+  	 WHERE no = #{no}
+  </delete>
+  
 </mapper>
 
 

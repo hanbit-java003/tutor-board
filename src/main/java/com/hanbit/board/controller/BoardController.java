@@ -76,6 +76,17 @@ public class BoardController {
 		return "/detail";
 	}
 	
+	public String doDelete() {
+		int no = Integer.valueOf(request.getParameter("no"));
+		
+		SqlSession sqlSession = CommonDAO.openSession();
+		sqlSession.delete("board.deleteArticle", no);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return "/list";
+	}
+	
 }
 
 
