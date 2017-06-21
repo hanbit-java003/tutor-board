@@ -35,7 +35,15 @@ public class FrontServlet extends HttpServlet {
 		else if (uri.endsWith(".do")) {
 			viewName = handleAction(uri, controller);
 			
-			String path = viewName + ".view";
+			String path = "";
+			
+			if (viewName.contains("?")) {
+				path = viewName;
+			}
+			else {
+				path = viewName + ".view";
+			}
+			
 			res.sendRedirect(path);
 		}
 	}
@@ -48,6 +56,10 @@ public class FrontServlet extends HttpServlet {
 		switch (actionName) {
 			case "/new": {
 				viewName = controller.doAdd();
+				break;
+			}
+			case "/edit": {
+				viewName = controller.doEdit();
 				break;
 			}
 			case "/delete": {

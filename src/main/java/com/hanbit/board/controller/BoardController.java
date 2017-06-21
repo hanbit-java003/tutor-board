@@ -70,6 +70,26 @@ public class BoardController {
 		return "/edit";
 	}
 	
+	public String doEdit() {
+		int no = Integer.valueOf(request.getParameter("no"));
+		String title = request.getParameter("title");
+		String writer = request.getParameter("writer");
+		String contents = request.getParameter("contents");
+		
+		BoardVO boardVO = new BoardVO();
+		boardVO.setNo(no);
+		boardVO.setTitle(title);
+		boardVO.setWriter(writer);
+		boardVO.setContents(contents);
+		
+		SqlSession sqlSession = CommonDAO.openSession();
+		sqlSession.update("board.updateArticle", boardVO);
+		sqlSession.commit();
+		sqlSession.close();
+
+		return "/detail.view?no=" + no;
+	}
+	
 	public String detail() {
 		int no = Integer.valueOf(request.getParameter("no"));
 		
