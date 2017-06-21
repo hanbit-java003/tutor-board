@@ -11,6 +11,7 @@
   <select id="selectList" resultType="com.hanbit.board.vo.BoardVO">
   	SELECT no, title, writer, views
   	  FROM tbl_board
+  	 ORDER BY no DESC
   </select>
   
 </mapper>

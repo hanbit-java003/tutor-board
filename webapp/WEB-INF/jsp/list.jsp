@@ -7,8 +7,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>게시판 목록</title>
-	<link rel="stylesheet"
-		href="//unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/board.css">
 </head>
 <body>
@@ -65,10 +64,11 @@
   </ul>
 </nav>
 <div class="board-buttons">
-	<button class="btn btn-primary">글쓰기</button>
+	<button id="board-new" class="btn btn-primary">글쓰기</button>
 </div>
 <script src="//unpkg.com/jquery@3.2.1"></script>
 <script src="//unpkg.com/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+<script src="/js/list.js"></script>
 </body>
 </html>
 

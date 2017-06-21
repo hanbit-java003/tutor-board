@@ -6,3 +6,7 @@
 	padding: 10px 20px;
 	text-align: right;
 }
+
+#board-contents {
+	height: 300px;
+}
