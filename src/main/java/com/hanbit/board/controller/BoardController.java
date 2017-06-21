@@ -1,7 +1,14 @@
 package com.hanbit.board.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.hanbit.board.dao.CommonDAO;
+import com.hanbit.board.vo.BoardVO;
 
 public class BoardController {
 	
@@ -16,6 +23,12 @@ public class BoardController {
 	}
 
 	public String list() {
+		SqlSession sqlSession = CommonDAO.openSession();
+		List<BoardVO> list = sqlSession.selectList("board.selectList");
+		sqlSession.close();
+		
+		request.setAttribute("list", list);
+		
 		return "/list";
 	}
 

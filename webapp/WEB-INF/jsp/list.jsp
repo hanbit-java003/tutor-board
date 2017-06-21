@@ -1,3 +1,5 @@
+<%@page import="com.hanbit.board.vo.BoardVO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,12 +23,15 @@
 		</tr>
 	</thead>
 	<tbody>
-	<% for (int i=0; i<10; i++) { %>
+	<%
+	List<BoardVO> list = (List<BoardVO>) request.getAttribute("list");
+	%>
+	<% for (BoardVO article : list) { %>
 		<tr>
-			<td><%=(i+1) %></td>
-			<td>안녕하세요.</td>
-			<td>김한빛</td>
-			<td>15</td>
+			<td><%=article.getNo() %></td>
+			<td><%=article.getTitle() %></td>
+			<td><%=article.getWriter() %></td>
+			<td><%=article.getViews() %></td>
 		</tr>
 	<% } %>
 	</tbody>
