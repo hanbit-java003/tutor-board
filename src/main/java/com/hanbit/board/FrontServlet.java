@@ -25,14 +25,32 @@ public class FrontServlet extends HttpServlet {
 		
 		if (uri.endsWith(".view")) {
 			viewName = handleView(uri, controller);
+			
+			String path = "/WEB-INF/jsp" + viewName + ".jsp";
+			RequestDispatcher dispatcher = req.getRequestDispatcher(path);
+			dispatcher.forward(req, res);
 		}
 		else if (uri.endsWith(".do")) {
+			viewName = handleAction(uri, controller);
 			
+			String path = viewName + ".view";
+			res.sendRedirect(path);
+		}
+	}
+	
+	private String handleAction(String uri, BoardController controller) {
+		int endIndex = uri.lastIndexOf(".do");
+		String actionName = uri.substring(0, endIndex);
+		String viewName = "/404";
+		
+		switch (actionName) {
+			case "/new": {
+				viewName = controller.doAdd();
+				break;
+			}
 		}
 		
-		String path = "/WEB-INF/jsp" + viewName + ".jsp";
-		RequestDispatcher dispatcher = req.getRequestDispatcher(path);
-		dispatcher.forward(req, res);
+		return viewName;
 	}
 	
 	private String handleView(String uri, BoardController controller) {

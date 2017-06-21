@@ -36,6 +36,11 @@ public class BoardController {
 		return "/new";
 	}
 	
+	public String doAdd() {
+		
+		return "/list";
+	}
+	
 	public String edit() {
 		return "/edit";
 	}
