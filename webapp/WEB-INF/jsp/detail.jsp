@@ -27,7 +27,7 @@ BoardVO article = (BoardVO) request.getAttribute("article");
 </div>
 <input type="hidden" id="board-no" value="<%=article.getNo() %>">
 <div class="board-buttons">
-	<button class="btn btn-warning">수정</button>
+	<button id="board-edit" class="btn btn-warning">수정</button>
 	<button id="board-delete" class="btn btn-danger">삭제</button>
 	<button id="board-list" class="btn btn-default">목록</button>
 </div>

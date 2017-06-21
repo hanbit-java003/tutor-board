@@ -59,6 +59,14 @@ public class BoardController {
 	}
 	
 	public String edit() {
+		int no = Integer.valueOf(request.getParameter("no"));
+		
+		SqlSession sqlSession = CommonDAO.openSession();
+		BoardVO boardVO = sqlSession.selectOne("board.selectArticle", no);
+		sqlSession.close();
+		
+		request.setAttribute("article", boardVO);
+		
 		return "/edit";
 	}
 	
