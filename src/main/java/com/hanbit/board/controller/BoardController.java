@@ -67,6 +67,8 @@ public class BoardController {
 		
 		SqlSession sqlSession = CommonDAO.openSession();
 		BoardVO boardVO = sqlSession.selectOne("board.selectArticle", no);
+		sqlSession.update("board.updateViews", no);
+		sqlSession.commit();
 		sqlSession.close();
 		
 		request.setAttribute("article", boardVO);

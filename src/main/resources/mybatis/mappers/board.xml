@@ -33,7 +33,16 @@
 	 WHERE no = #{no}
   </select>
   
+  <update id="updateViews" parameterType="int">
+  	UPDATE tbl_board
+  	   SET views = views + 1
+  	 WHERE no = #{no}
+  </update>
+  
 </mapper>
+
+
+
 
 
 

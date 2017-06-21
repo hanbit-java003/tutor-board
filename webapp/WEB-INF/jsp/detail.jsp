@@ -23,7 +23,7 @@ BoardVO article = (BoardVO) request.getAttribute("article");
 </div>
 <div class="form-group">
 	<label>내용</label>
-	<div class="board-contents"><%=article.getContents() %></div>
+	<div class="board-contents"><%=article.getContents().replace("\n", "<br>") %></div>
 </div>
 <div class="board-buttons">
 	<button class="btn btn-warning">수정</button>
