@@ -15,7 +15,7 @@
   </select>
   
   <select id="selectNextNo" resultType="int">
-  	SELECT MAX(no) + 1
+  	SELECT IFNULL(MAX(no), 0) + 1
   	  FROM tbl_board
   </select>
   
@@ -37,6 +37,14 @@
   	UPDATE tbl_board
   	   SET views = views + 1
   	 WHERE no = #{no}
+  </update>
+  
+  <update id="updateArticle" parameterType="com.hanbit.board.vo.BoardVO">
+	UPDATE tbl_board
+	   SET title = #{title},
+	   	   writer = #{writer},
+	   	   contents = #{contents}
+	 WHERE no = #{no}  
   </update>
   
   <delete id="deleteArticle" parameterType="int">
