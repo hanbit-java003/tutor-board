@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.hanbit.board.contoller.BoardController;
+import com.hanbit.board.controller.BoardController;
 import com.hanbit.board.dao.CommonDAO;
 
 public class FrontServlet extends HttpServlet {

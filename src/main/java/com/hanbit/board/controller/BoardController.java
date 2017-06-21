@@ -1,4 +1,4 @@
-package com.hanbit.board.contoller;
+package com.hanbit.board.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
