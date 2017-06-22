@@ -1,3 +1,4 @@
+<%@page import="org.apache.commons.text.StringEscapeUtils"%>
 <%@page import="com.hanbit.board.vo.BoardVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -28,8 +29,8 @@
 	<% for (BoardVO article : list) { %>
 		<tr no="<%=article.getNo() %>">
 			<td><%=article.getNo() %></td>
-			<td><%=article.getTitle() %></td>
-			<td><%=article.getWriter() %></td>
+			<td><%=StringEscapeUtils.escapeHtml4(article.getTitle()) %></td>
+			<td><%=StringEscapeUtils.escapeHtml4(article.getWriter()) %></td>
 			<td><%=article.getViews() %></td>
 		</tr>
 	<% } %>

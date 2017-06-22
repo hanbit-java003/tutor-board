@@ -1,3 +1,4 @@
+<%@page import="org.apache.commons.text.StringEscapeUtils"%>
 <%@page import="com.hanbit.board.vo.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -23,15 +24,15 @@ catch (Exception e) {
 <body>
 <div class="form-group">
 	<label>제목</label>
-	<div class="board-text"><%=article.getTitle() %></div>
+	<div class="board-text"><%=StringEscapeUtils.escapeHtml4(article.getTitle()) %></div>
 </div>
 <div class="form-group">
 	<label>작성자</label>
-	<div class="board-text"><%=article.getWriter() %></div>
+	<div class="board-text"><%=StringEscapeUtils.escapeHtml4(article.getWriter()) %></div>
 </div>
 <div class="form-group">
 	<label>내용</label>
-	<div class="board-contents"><%=article.getContents().replace("\n", "<br>") %></div>
+	<div class="board-contents"><%=StringEscapeUtils.escapeHtml4(article.getContents()).replace("\n", "<br>") %></div>
 </div>
 <input type="hidden" id="page" value="<%=currentPage %>">
 <input type="hidden" id="board-no" value="<%=article.getNo() %>">

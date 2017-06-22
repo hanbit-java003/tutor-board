@@ -1,3 +1,4 @@
+<%@page import="org.apache.commons.text.StringEscapeUtils"%>
 <%@page import="com.hanbit.board.vo.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -24,15 +25,15 @@ catch (Exception e) {
 <form id="board-form" method="post" action="/edit.do">
 	<div class="form-group">
 		<label for="board-title">제목</label>
-		<input name="title" value="<%=article.getTitle() %>" type="text" class="form-control" id="board-title" placeholder="제목">
+		<input name="title" value="<%=StringEscapeUtils.escapeHtml4(article.getTitle()) %>" type="text" class="form-control" id="board-title" placeholder="제목">
 	</div>
 	<div class="form-group">
 		<label for="board-writer">작성자</label>
-		<input name="writer" value="<%=article.getWriter() %>" type="text" class="form-control" id="board-writer" placeholder="작성자">
+		<input name="writer" value="<%=StringEscapeUtils.escapeHtml4(article.getWriter()) %>" type="text" class="form-control" id="board-writer" placeholder="작성자">
 	</div>
 	<div class="form-group">
 		<label for="board-contents">내용</label>
-		<textarea name="contents" class="form-control" id="board-contents"><%=article.getContents() %></textarea>
+		<textarea name="contents" class="form-control" id="board-contents"><%=StringEscapeUtils.escapeHtml4(article.getContents()) %></textarea>
 	</div>
 	<input type="hidden" name="page" id="page" value="<%=currentPage %>">
 	<input type="hidden" name="no" id="board-no" value="<%=article.getNo() %>">
