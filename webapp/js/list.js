@@ -4,9 +4,10 @@ $(function() {
 	});
 	
 	$('#board-list tbody tr').on('click', function() {
+		var page = $('#page').val();
 		var no = $(this).attr('no');
 		
-		location.href = '/detail.view?no=' + no;
+		location.href = '/detail.view?page=' + page + '&no=' + no;
 	});
 	
 	$('.board-page').on('click', function(event) {

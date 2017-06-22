@@ -3,6 +3,14 @@
     pageEncoding="UTF-8"%>
 <%
 BoardVO article = (BoardVO) request.getAttribute("article");
+int currentPage = 1;
+
+try {
+	currentPage = Integer.valueOf(request.getParameter("page"));
+}
+catch (Exception e) {
+	currentPage = 1;
+}
 %>
 <!DOCTYPE html>
 <html>
@@ -25,6 +33,7 @@ BoardVO article = (BoardVO) request.getAttribute("article");
 	<label>내용</label>
 	<div class="board-contents"><%=article.getContents().replace("\n", "<br>") %></div>
 </div>
+<input type="hidden" id="page" value="<%=currentPage %>">
 <input type="hidden" id="board-no" value="<%=article.getNo() %>">
 <div class="board-buttons">
 	<button id="board-edit" class="btn btn-warning">수정</button>

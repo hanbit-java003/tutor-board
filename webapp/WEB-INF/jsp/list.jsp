@@ -58,6 +58,7 @@
 	int nextPage = endPage + 1;
 %>
 <nav class="board-pages" aria-label="Page navigation">
+  <input type="hidden" id="page" value="<%=currentPage %>">
   <ul class="pagination">
     <li<%=(prevPage < 1 ? " class=\"disabled\"" : "") %>>
       <a class="board-page" page="<%=prevPage %>" href="#" aria-label="Previous">

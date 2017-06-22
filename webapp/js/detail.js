@@ -1,6 +1,8 @@
 $(function() {
 	$('#board-list').on('click', function() {
-		location.href = '/list.view';
+		var page = $('#page').val();
+		
+		location.href = '/list.view?page=' + page;
 	});
 	
 	$('#board-delete').on('click', function() {
@@ -10,8 +12,18 @@ $(function() {
 	});
 	
 	$('#board-edit').on('click', function() {
+		var page = $('#page').val();
 		var no = $('#board-no').val();
 		
-		location.href = '/edit.view?no=' + no;
+		location.href = '/edit.view?page=' + page + '&no=' + no;
 	});
 });
+
+
+
+
+
+
+
+
+

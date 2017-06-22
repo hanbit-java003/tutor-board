@@ -91,6 +91,7 @@ public class BoardController {
 	}
 	
 	public String doEdit() {
+		int page = Integer.valueOf(request.getParameter("page"));
 		int no = Integer.valueOf(request.getParameter("no"));
 		String title = request.getParameter("title");
 		String writer = request.getParameter("writer");
@@ -107,7 +108,7 @@ public class BoardController {
 		sqlSession.commit();
 		sqlSession.close();
 
-		return "/detail.view?no=" + no;
+		return "/detail.view?page=" + page + "&no=" + no;
 	}
 	
 	public String detail() {

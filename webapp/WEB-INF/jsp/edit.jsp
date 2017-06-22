@@ -3,6 +3,14 @@
     pageEncoding="UTF-8"%>
 <%
 BoardVO article = (BoardVO) request.getAttribute("article");
+int currentPage = 1;
+
+try {
+	currentPage = Integer.valueOf(request.getParameter("page"));
+}
+catch (Exception e) {
+	currentPage = 1;
+}
 %>
 <!DOCTYPE html>
 <html>
@@ -26,6 +34,7 @@ BoardVO article = (BoardVO) request.getAttribute("article");
 		<label for="board-contents">내용</label>
 		<textarea name="contents" class="form-control" id="board-contents"><%=article.getContents() %></textarea>
 	</div>
+	<input type="hidden" name="page" id="page" value="<%=currentPage %>">
 	<input type="hidden" name="no" id="board-no" value="<%=article.getNo() %>">
 	<div class="board-buttons">
 		<button type="button" id="board-send" class="btn btn-success">저장</button>

@@ -1,8 +1,9 @@
 $(function() {
 	$('#board-cancel').on('click', function() {
+		var page = $('#page').val();
 		var no = $('#board-no').val();
 		
-		location.href = '/detail.view?no=' + no;
+		location.href = '/detail.view?page=' + page + '&no=' + no;
 	});
 	
 	$('#board-reset').on('click', function() {
