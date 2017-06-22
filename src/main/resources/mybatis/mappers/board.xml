@@ -16,10 +16,15 @@
   <select id="selectList"
   	parameterType="com.hanbit.board.vo.PageVO"
   	resultType="com.hanbit.board.vo.BoardVO">
-  	SELECT no, title, writer, views
-  	  FROM tbl_board
-  	 ORDER BY no DESC
-  	 LIMIT #{firstIndex}, #{rowsPerPage}
+  	SELECT b.no, title, b.writer, views, COUNT(rno) reply_count
+	  FROM (
+		SELECT no, title, writer, views
+		  FROM tbl_board
+		 ORDER BY no DESC
+		 LIMIT #{firstIndex}, #{rowsPerPage}) b LEFT JOIN tbl_reply r
+	    ON b.no = r.no
+	 GROUP BY b.no
+	 ORDER BY b.no DESC
   </select>
   
   <select id="selectNextNo" resultType="int">

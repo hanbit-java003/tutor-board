@@ -29,7 +29,9 @@
 	<% for (BoardVO article : list) { %>
 		<tr no="<%=article.getNo() %>">
 			<td><%=article.getNo() %></td>
-			<td><%=StringEscapeUtils.escapeHtml4(article.getTitle()) %></td>
+			<td><%=StringEscapeUtils.escapeHtml4(article.getTitle()) %>
+				[<%=article.getReplyCount() %>]
+			</td>
 			<td><%=StringEscapeUtils.escapeHtml4(article.getWriter()) %></td>
 			<td><%=article.getViews() %></td>
 		</tr>

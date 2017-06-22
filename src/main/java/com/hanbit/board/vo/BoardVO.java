@@ -7,6 +7,7 @@ public class BoardVO {
 	private String writer;
 	private int views;
 	private String contents;
+	private int replyCount;
 	
 	public int getNo() {
 		return no;
@@ -37,6 +38,12 @@ public class BoardVO {
 	}
 	public void setContents(String contents) {
 		this.contents = contents;
+	}
+	public int getReplyCount() {
+		return replyCount;
+	}
+	public void setReplyCount(int replyCount) {
+		this.replyCount = replyCount;
 	}
 	
 }
