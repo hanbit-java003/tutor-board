@@ -1,0 +1,27 @@
+#menu {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	background-color: #555;
+	color: #fff;
+}
+
+#menu-close {
+	padding: 5px 20px;
+	text-align: right;
+	border-bottom: solid 1px #ddd;
+	cursor: pointer;
+}
+
+#menu > ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#menu > ul > li {
+	padding: 5px 20px;
+	width: 200px;
+	border-bottom: solid 1px #ddd;
+}
