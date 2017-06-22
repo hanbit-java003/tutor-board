@@ -9,7 +9,13 @@ $(function() {
 		location.href = '/detail.view?no=' + no;
 	});
 	
-	$('.board-page').on('click', function() {
+	$('.board-page').on('click', function(event) {
+		event.preventDefault();
+		
+		if ($(this).parent('li').hasClass('disabled')) {
+			return;
+		}
+		
 		var page = $(this).attr('page');
 		
 		location.href = '/list.view?page=' + page;

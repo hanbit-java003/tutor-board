@@ -38,6 +38,7 @@
 <%
 	int totalCount = (int) request.getAttribute("totalCount");
 	int rowsPerPage = 5;
+	int pagesToShow = 2;
 	int totalPages = (totalCount / rowsPerPage)
 			+ (totalCount % rowsPerPage == 0 ? 0 : 1);
 	int currentPage = 1;
@@ -48,19 +49,28 @@
 	catch (Exception e) {
 		currentPage = 1;
 	}
+	
+	int firstPage = 1;
+	int lastPage = totalPages;
+	int startPage = ((currentPage - 1) / pagesToShow) * pagesToShow + 1;
+	int endPage = Math.min(startPage + pagesToShow - 1, lastPage);
+	int prevPage = startPage - 1;
+	int nextPage = endPage + 1;
 %>
 <nav class="board-pages" aria-label="Page navigation">
   <ul class="pagination">
-    <li>
-      <a href="#" aria-label="Previous">
+    <li<%=(prevPage < 1 ? " class=\"disabled\"" : "") %>>
+      <a class="board-page" page="<%=prevPage %>" href="#" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    <% for (int i=1; i<=totalPages; i++) { %>
-    <li<%=(i == currentPage ? " class=\"active\"" : "") %>><a class="board-page" page="<%=i %>" href="#"><%=i %></a></li>
+    <% for (int i=startPage; i<=endPage; i++) { %>
+    <li<%=(i == currentPage ? " class=\"active\"" : "") %>>
+    	<a class="board-page" page="<%=i %>" href="#"><%=i %></a>
+    </li>
     <% } %>
-    <li>
-      <a href="#" aria-label="Next">
+    <li<%=(nextPage > lastPage ? " class=\"disabled\"" : "") %>>
+      <a class="board-page" page="<%=nextPage %>" href="#" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
