@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.hanbit.board.dao.CommonDAO;
 import com.hanbit.board.vo.BoardVO;
+import com.hanbit.board.vo.PageVO;
 
 public class BoardController {
 	
@@ -23,11 +24,30 @@ public class BoardController {
 	}
 
 	public String list() {
+		int currentPage = 1;
+		
+		try {
+			String page = request.getParameter("page");
+			currentPage = Integer.valueOf(page);
+		}
+		catch (Exception e) {
+			currentPage = 1;
+		}
+		
+		int rowsPerPage = 5;
+		int firstIndex = (currentPage - 1) * rowsPerPage;
+		
+		PageVO pageVO = new PageVO();
+		pageVO.setFirstIndex(firstIndex);
+		pageVO.setRowsPerPage(rowsPerPage);
+		
 		SqlSession sqlSession = CommonDAO.openSession();
-		List<BoardVO> list = sqlSession.selectList("board.selectList");
+		List<BoardVO> list = sqlSession.selectList("board.selectList", pageVO);
+		int totalCount = sqlSession.selectOne("board.countTotal");
 		sqlSession.close();
 		
 		request.setAttribute("list", list);
+		request.setAttribute("totalCount", totalCount);
 		
 		return "/list";
 	}

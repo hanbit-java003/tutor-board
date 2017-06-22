@@ -8,10 +8,18 @@
     SELECT 1 FROM DUAL
   </select>
   
-  <select id="selectList" resultType="com.hanbit.board.vo.BoardVO">
+  <select id="countTotal" resultType="int">
+  	SELECT COUNT(no)
+  	  FROM tbl_board
+  </select>
+  
+  <select id="selectList"
+  	parameterType="com.hanbit.board.vo.PageVO"
+  	resultType="com.hanbit.board.vo.BoardVO">
   	SELECT no, title, writer, views
   	  FROM tbl_board
   	 ORDER BY no DESC
+  	 LIMIT #{firstIndex}, #{rowsPerPage}
   </select>
   
   <select id="selectNextNo" resultType="int">

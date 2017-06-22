@@ -8,4 +8,10 @@ $(function() {
 		
 		location.href = '/detail.view?no=' + no;
 	});
+	
+	$('.board-page').on('click', function() {
+		var page = $(this).attr('page');
+		
+		location.href = '/list.view?page=' + page;
+	});
 });

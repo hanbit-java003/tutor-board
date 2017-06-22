@@ -36,14 +36,17 @@
 	</tbody>
 </table>
 <%
-	int totalPages = 5;
-	int cPage = 1;
+	int totalCount = (int) request.getAttribute("totalCount");
+	int rowsPerPage = 5;
+	int totalPages = (totalCount / rowsPerPage)
+			+ (totalCount % rowsPerPage == 0 ? 0 : 1);
+	int currentPage = 1;
 	
 	try {
-		cPage = Integer.valueOf(request.getParameter("page"));
+		currentPage = Integer.valueOf(request.getParameter("page"));
 	}
 	catch (Exception e) {
-		cPage = 1;
+		currentPage = 1;
 	}
 %>
 <nav class="board-pages" aria-label="Page navigation">
@@ -54,7 +57,7 @@
       </a>
     </li>
     <% for (int i=1; i<=totalPages; i++) { %>
-    <li<%=(i == cPage ? " class=\"active\"" : "") %>><a href="#"><%=i %></a></li>
+    <li<%=(i == currentPage ? " class=\"active\"" : "") %>><a class="board-page" page="<%=i %>" href="#"><%=i %></a></li>
     <% } %>
     <li>
       <a href="#" aria-label="Next">
