@@ -59,6 +59,8 @@
 	height: 100%;
 	padding: 5px 10px;
 	font-weight: bold;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .reply-contents {
