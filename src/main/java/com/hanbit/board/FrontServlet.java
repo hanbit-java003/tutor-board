@@ -66,6 +66,10 @@ public class FrontServlet extends HttpServlet {
 				viewName = controller.doDelete();
 				break;
 			}
+			case "/reply": {
+				viewName = controller.doReply();
+				break;
+			}
 		}
 		
 		return viewName;

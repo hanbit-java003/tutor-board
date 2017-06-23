@@ -5,11 +5,13 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.SqlSession;
 
 import com.hanbit.board.dao.CommonDAO;
 import com.hanbit.board.vo.BoardVO;
 import com.hanbit.board.vo.PageVO;
+import com.hanbit.board.vo.ReplyVO;
 
 public class BoardController {
 	
@@ -118,9 +120,13 @@ public class BoardController {
 		BoardVO boardVO = sqlSession.selectOne("board.selectArticle", no);
 		sqlSession.update("board.updateViews", no);
 		sqlSession.commit();
+		
+		List<ReplyVO> replies = sqlSession.selectList("reply.selectReplies", no);
+		
 		sqlSession.close();
 		
 		request.setAttribute("article", boardVO);
+		request.setAttribute("replies", replies);
 		
 		return "/detail";
 	}
@@ -134,6 +140,31 @@ public class BoardController {
 		sqlSession.close();
 		
 		return "/list";
+	}
+	
+	public String doReply() {
+		String referer = request.getHeader("Referer");
+		String queryString
+			= StringUtils.substringAfter(referer, "?");
+		
+		SqlSession sqlSession = CommonDAO.openSession();
+		
+		int no = Integer.valueOf(request.getParameter("no"));
+		int rno = sqlSession.selectOne("reply.selectNextRno", no);
+		String writer = request.getParameter("writer");
+		String contents = request.getParameter("contents");
+		
+		ReplyVO replyVO = new ReplyVO();
+		replyVO.setRno(rno);
+		replyVO.setNo(no);
+		replyVO.setWriter(writer);
+		replyVO.setContents(contents);
+		
+		sqlSession.insert("reply.insertReply", replyVO);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return "/detail.view?" + queryString;
 	}
 	
 }

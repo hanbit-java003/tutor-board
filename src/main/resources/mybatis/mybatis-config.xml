@@ -19,5 +19,10 @@
   </environments>
   <mappers>
     <mapper resource="mybatis/mappers/board.xml"/>
+    <mapper resource="mybatis/mappers/reply.xml"/>
   </mappers>
 </configuration>
+
+
+
+

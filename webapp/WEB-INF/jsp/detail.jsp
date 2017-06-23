@@ -1,3 +1,5 @@
+<%@page import="com.hanbit.board.vo.ReplyVO"%>
+<%@page import="java.util.List"%>
 <%@page import="org.apache.commons.text.StringEscapeUtils"%>
 <%@page import="com.hanbit.board.vo.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -41,10 +43,25 @@ catch (Exception e) {
 	<button id="board-delete" class="btn btn-danger">삭제</button>
 	<button id="board-list" class="btn btn-default">목록</button>
 </div>
+
 <div class="board-reply-box">
+	<input type="text" id="board-reply-writer" class="form-control"
+		placeholder="작성자">
 	<textarea id="board-reply" class="form-control"></textarea>
-	<button id="board-reply-send" class="btn btn-primary">댓글쓰기</button>
+	<button type="button" id="board-reply-send" class="btn btn-primary">댓글쓰기</button>
 </div>
+<%
+List<ReplyVO> replies
+	= (List<ReplyVO>) request.getAttribute("replies");
+%>
+<ul class="board-replies">
+	<% for (ReplyVO reply : replies) { %>
+	<li>
+		<span class="reply-writer"><%=StringEscapeUtils.escapeHtml4(reply.getWriter()) %></span>
+		<span class="reply-contents"><%=StringEscapeUtils.escapeHtml4(reply.getContents()).replace("\n", "<br>") %></span>
+	</li>
+	<% } %>
+</ul>
 
 <script src="//unpkg.com/jquery@3.2.1"></script>
 <script src="//unpkg.com/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
