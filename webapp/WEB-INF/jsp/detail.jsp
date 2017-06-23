@@ -41,6 +41,10 @@ catch (Exception e) {
 	<button id="board-delete" class="btn btn-danger">삭제</button>
 	<button id="board-list" class="btn btn-default">목록</button>
 </div>
+<div class="board-reply-box">
+	<textarea id="board-reply" class="form-control"></textarea>
+	<button id="board-reply-send" class="btn btn-primary">댓글쓰기</button>
+</div>
 
 <script src="//unpkg.com/jquery@3.2.1"></script>
 <script src="//unpkg.com/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>

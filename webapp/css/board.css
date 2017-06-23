@@ -25,6 +25,20 @@
 	border-bottom: solid 1px #999;
 }
 
+.board-reply-box {
+	position: relative;
+	padding-right: 110px;
+}
+
+#board-reply-send {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: 100px;
+	height: 100%;
+}
+
+
 
 
 
