@@ -24,5 +24,24 @@
 	 WHERE no = #{no}
 	 ORDER BY rno
   </select>
+  
+  <delete id="deleteReplies" parameterType="int">
+  	DELETE
+  	  FROM tbl_reply
+  	 WHERE no = #{no}
+  </delete>
 
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

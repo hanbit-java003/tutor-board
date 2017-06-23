@@ -54,12 +54,14 @@
 	height: 100%;
 	padding: 5px 10px;
 	font-weight: bold;
+	vertical-align: top;
 }
 
 .reply-contents {
 	display: inline-block;
 	padding: 5px 10px;
 	border-left: solid 2px #999;
+	vertical-align: top;
 }
 
 

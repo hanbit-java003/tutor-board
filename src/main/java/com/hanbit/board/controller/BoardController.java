@@ -135,6 +135,7 @@ public class BoardController {
 		int no = Integer.valueOf(request.getParameter("no"));
 		
 		SqlSession sqlSession = CommonDAO.openSession();
+		sqlSession.delete("reply.deleteReplies", no);
 		sqlSession.delete("board.deleteArticle", no);
 		sqlSession.commit();
 		sqlSession.close();
