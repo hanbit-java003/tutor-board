@@ -59,6 +59,9 @@ List<ReplyVO> replies
 	<li>
 		<span class="reply-writer"><%=StringEscapeUtils.escapeHtml4(reply.getWriter()) %></span>
 		<span class="reply-contents"><%=StringEscapeUtils.escapeHtml4(reply.getContents()).replace("\n", "<br>") %></span>
+		<span class="reply-actions">
+			<a href="/delete/reply.do?no=<%=article.getNo() %>&rno=<%=reply.getRno() %>">삭제</a>
+		</span>
 	</li>
 	<% } %>
 </ul>

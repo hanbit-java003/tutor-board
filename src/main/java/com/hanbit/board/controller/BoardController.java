@@ -168,6 +168,25 @@ public class BoardController {
 		return "/detail.view?" + queryString;
 	}
 	
+	public String doDeleteReply() {
+		String referer = request.getHeader("Referer");
+		String queryString
+			= StringUtils.substringAfter(referer, "?");
+		
+		int no = Integer.valueOf(request.getParameter("no"));
+		int rno = Integer.valueOf(request.getParameter("rno"));
+		
+		ReplyVO replyVO = new ReplyVO();
+		replyVO.setNo(no);
+		replyVO.setRno(rno);
+		
+		SqlSession sqlSession = CommonDAO.openSession();
+		sqlSession.delete("reply.deleteReply", replyVO);
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return "/detail.view?" + queryString;
+	}
 }
 
 
